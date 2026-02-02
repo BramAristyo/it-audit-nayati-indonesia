@@ -15,7 +15,7 @@ import (
 func HTTPSender(cfg *config.Config, data models.SpecResponse) error {
 	b, err := json.Marshal(data)
 	if err != nil {
-
+		log.Fatalf("failed marshal body: %v", err)
 	}
 
 	body := bytes.NewBuffer(b)
@@ -31,7 +31,11 @@ func HTTPSender(cfg *config.Config, data models.SpecResponse) error {
 		}
 	}(resp.Body)
 
-	fmt.Printf("Successfully sending data to the server! \n\n")
+	if resp.StatusCode >= 200 && resp.StatusCode < 300 {
+		fmt.Printf("Successfully sending data to the server! \n")
+	} else {
+		fmt.Printf("Server returned an error! \n")
+	}
 
 	return nil
 }

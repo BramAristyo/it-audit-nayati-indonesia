@@ -22,6 +22,7 @@ func GetDiskInfo() []models.Disk {
 		usage, _ := disk.Usage(p.Mountpoint)
 
 		drive := p.Mountpoint
+
 		totalGB := float64(usage.Total / 1024 / 1024 / 1024)
 		diskType := getMediaType(drives)
 
