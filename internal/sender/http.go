@@ -19,7 +19,10 @@ func HTTPSender(cfg *config.Config, data models.SpecResponse) error {
 	}
 
 	body := bytes.NewBuffer(b)
-	resp, err := http.Post(cfg.APIUrl, "application/json; charset=utf-8", body)
+	resp, err := http.Post("https://ns.nayatisys.com/api/send-it-collector", "application/json; charset=utf-8", body)
+
+	// TODO Temporary hardcoded URL API
+	//resp, err := http.Post(cfg.APIUrl, "application/json; charset=utf-8", body)
 	if err != nil {
 		log.Fatalf("failed to send data: %v", err)
 	}
