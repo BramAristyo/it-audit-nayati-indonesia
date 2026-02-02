@@ -8,11 +8,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Nayati-Indonesia/spec-collector/internal/config"
 	"github.com/Nayati-Indonesia/spec-collector/models"
 )
 
-func HTTPSender(cfg *config.Config, data models.SpecResponse) error {
+func HTTPSender(data models.SpecResponse) error {
 	b, err := json.Marshal(data)
 	if err != nil {
 		log.Fatalf("failed marshal body: %v", err)
