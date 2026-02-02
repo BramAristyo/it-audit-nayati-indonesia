@@ -8,6 +8,7 @@ import (
 	"github.com/yusufpapurcu/wmi"
 )
 
+// TODO: Get Primary IP, Just get the First data [0]
 func getIPAddress() []string {
 	var ips []string
 

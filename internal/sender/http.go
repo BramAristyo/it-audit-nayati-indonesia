@@ -1,1 +1,37 @@
 package sender
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+
+	"github.com/Nayati-Indonesia/spec-collector/internal/config"
+	"github.com/Nayati-Indonesia/spec-collector/models"
+)
+
+func HTTPSender(cfg *config.Config, data models.SpecResponse) error {
+	b, err := json.Marshal(data)
+	if err != nil {
+
+	}
+
+	body := bytes.NewBuffer(b)
+	resp, err := http.Post(cfg.APIUrl, "application/json; charset=utf-8", body)
+	if err != nil {
+		log.Fatalf("failed to send data: %v", err)
+	}
+
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+
+		}
+	}(resp.Body)
+
+	fmt.Printf("Successfully sending data to the server! \n\n")
+
+	return nil
+}
