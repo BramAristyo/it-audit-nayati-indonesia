@@ -3,7 +3,7 @@ package collector
 import (
 	"net"
 
-	"github.com/Nayati-Indonesia/spec-collector/models"
+	"github.com/Nayati-Indonesia/it-audit-collector/models"
 	"github.com/shirou/gopsutil/host"
 	"github.com/yusufpapurcu/wmi"
 )
@@ -33,7 +33,12 @@ func getIPAddress() string {
 	if err != nil {
 		return ""
 	}
-	defer conn.Close()
+	defer func(conn net.Conn) {
+		err := conn.Close()
+		if err != nil {
+
+		}
+	}(conn)
 
 	localAddr := conn.LocalAddr().(*net.UDPAddr)
 	return localAddr.IP.String()
@@ -42,7 +47,7 @@ func getIPAddress() string {
 func getHardwareInfo() models.Win32ComputerSystem {
 	var result []models.Win32ComputerSystem
 
-	err := wmi.Query("SELECT Manufacturer, Model FROM Win32_ComputerSystem", &result)
+	err := wmi.Query(`SELECT Manufacturer, Model FROM Win32_ComputerSystem`, &result)
 	if err != nil || len(result) == 0 {
 		return models.Win32ComputerSystem{}
 	}

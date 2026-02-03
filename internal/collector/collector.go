@@ -3,7 +3,7 @@ package collector
 import (
 	"time"
 
-	"github.com/Nayati-Indonesia/spec-collector/models"
+	"github.com/Nayati-Indonesia/it-audit-collector/models"
 )
 
 func CollectAll() models.SpecResponse {

@@ -8,7 +8,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Nayati-Indonesia/spec-collector/models"
+	"github.com/Nayati-Indonesia/it-audit-collector/models"
 )
 
 func HTTPSender(data models.SpecResponse) error {

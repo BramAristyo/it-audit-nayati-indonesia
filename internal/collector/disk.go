@@ -3,7 +3,7 @@ package collector
 import (
 	"strings"
 
-	"github.com/Nayati-Indonesia/spec-collector/models"
+	"github.com/Nayati-Indonesia/it-audit-collector/models"
 	"github.com/shirou/gopsutil/disk"
 	"github.com/yusufpapurcu/wmi"
 )
