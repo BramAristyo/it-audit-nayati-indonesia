@@ -22,5 +22,8 @@ func CollectAll() models.SpecResponse {
 	info.Storage = GetDiskInfo()
 	info.CollectedAt = time.Now()
 
+	info.Printer, _ = GetPrinterInfo()
+	info.Monitor, _ = GetMonitorInfo()
+
 	return info
 }

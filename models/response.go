@@ -13,11 +13,13 @@ type SpecResponse struct {
 	Manufacturer string `json:"manufacturer"`
 	Model        string `json:"model"`
 
-	OS      OS     `json:"os"`
-	CPU     CPU    `json:"cpu"`
-	Memory  Memory `json:"memory"`
-	GPU     []GPU  `json:"gpus"`
-	Storage []Disk `json:"storage"`
+	OS      OS        `json:"os"`
+	CPU     CPU       `json:"cpu"`
+	Memory  Memory    `json:"memory"`
+	GPU     []GPU     `json:"gpus"`
+	Storage []Disk    `json:"storage"`
+	Printer []Printer `json:"printer"`
+	Monitor []Monitor `json:"monitor"`
 
 	CollectedAt time.Time `json:"collected_at"`
 }
