@@ -3,7 +3,7 @@ package collector
 import (
 	"time"
 
-	"github.com/Nayati-Indonesia/spec-collector/models"
+	"github.com/Nayati-Indonesia/it-audit-collector/models"
 )
 
 func CollectAll() models.SpecResponse {
@@ -21,6 +21,9 @@ func CollectAll() models.SpecResponse {
 	info.GPU = getGPUInfo()
 	info.Storage = GetDiskInfo()
 	info.CollectedAt = time.Now()
+
+	info.Printer, _ = GetPrinterInfo()
+	info.Monitor, _ = GetMonitorInfo()
 
 	return info
 }

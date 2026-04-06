@@ -1,9 +1,18 @@
 package models
 
-type Identity struct {
-	Hostname     string `json:"host_name"`
-	MachineID    string `json:"machine_id"`
-	IPAddress    string `json:"ip_address"`
-	Manufacturer string `json:"manufacturer"`
-	Model        string `json:"model"`
+import "time"
+
+type Computer struct {
+	ID           uint `gorm:"primaryKey"`
+	HostName     string
+	MachineID    string
+	IPAddress    string
+	Manufacturer string
+	ModelName    string `gorm:"column:model"`
+	UpdatedAt    time.Time
+	CreatedAt    time.Time
+}
+
+func (Computer) TableName() string {
+	return "computers"
 }
