@@ -24,7 +24,7 @@ func Connect() error {
 		},
 	)
 
-	dsn := "root:@tcp(127.0.0.1:3306)/db_it_audit?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:@tcp(localhost:3370)/it_asset?charset=utf8mb4&parseTime=True&loc=Local"
 
 	var err error
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
